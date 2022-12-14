@@ -1,2 +1,14 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<br>
+<h1>Dashboard</h1><br>
+<div class="border border-dark rounded border-3 dashboard-stats">
+  <div class="border border-end stat">
+    <a href='/admin/products/'>
+      <h2>Product Count</h2>
+      <h3><%= @products %></h3>
+    </a>
+  </div>
+  <div class="border border-start stat">
+    <h2>Category Count</h2>
+    <h3><%= @categories %></h3>
+  </div>
+</div>
