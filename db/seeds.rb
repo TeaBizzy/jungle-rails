@@ -62,7 +62,7 @@ They can be eaten to relief a sore throat.
 As a defense mechanism the Scented Blade can collapse its flowers when it detects vibrations.
 They rely on animal pollination to reproduce. Once pollinated, they grow fairly large, delicious nuts.",
   image: open_asset('plante_2.jpg'),
-  quantity: 18,
+  quantity: 0,
   price: 24.99
 })
 
