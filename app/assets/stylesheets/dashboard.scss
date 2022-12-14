@@ -2,9 +2,14 @@
   display: inline-flex;
   width: 100%;
 
-  .stat {
+  .stat{
     text-align: center;
     width: inherit;
-    color: green
+    color: green;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 }
