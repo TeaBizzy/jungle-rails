@@ -80,7 +80,7 @@ RSpec.describe User, type: :model do
     end
 
     it "should return the correct user regardless of case for email" do
-      @user = User.authenticate_with_credentials("JaNeSmItH@EmAilL.cOm", "password")
+      @user = User.authenticate_with_credentials("JaNeSmItH@EmAiL.cOm", "password")
       expect(@user).to_not eq(nil)
       expect(@user.email).to eq("janesmith@email.com")
     end

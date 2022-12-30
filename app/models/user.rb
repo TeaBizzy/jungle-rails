@@ -6,7 +6,12 @@ class User < ApplicationRecord
   has_secure_password # Validates password presence & confirmation for us.
 
   def self.authenticate_with_credentials(email, password)
-    user = User.find_by_email(email)
+    if !email || !password
+      return
+    end
+
+    user = User.find_by_email(email.strip.downcase)
+    
     if (user && user.authenticate(password))
       user
     end
