@@ -73,8 +73,20 @@ RSpec.describe User, type: :model do
       expect(@user).to eq(nil)
     end
 
-    it "should return a user if password and email are correct" do
+    it "should return the correct user if password and email are correct" do
       @user = User.authenticate_with_credentials("janesmith@email.com", "password")
+      expect(@user).to_not eq(nil)
+      expect(@user.email).to eq("janesmith@email.com")
+    end
+
+    it "should return the correct user regardless of case for email" do
+      @user = User.authenticate_with_credentials("JaNeSmItH@EmAilL.cOm", "password")
+      expect(@user).to_not eq(nil)
+      expect(@user.email).to eq("janesmith@email.com")
+    end
+
+    it "should return the correct user give extra white space before and after the email" do
+      @user = User.authenticate_with_credentials("  janesmith@email.com    ", "password")
       expect(@user).to_not eq(nil)
       expect(@user.email).to eq("janesmith@email.com")
     end
