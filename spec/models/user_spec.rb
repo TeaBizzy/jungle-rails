@@ -17,6 +17,10 @@ RSpec.describe User, type: :model do
     end
 
     it "should give an error if last name is blank" do
+      @user = User.new(first_name: "John", last_name: nil, email: "example@email.com", password: "password")
+      @user.valid?
+      expect(@user.errors.full_messages[0]).to eq("Last name can't be blank")
+      expect(@user.errors.full_messages.length).to eq(1)
     end
 
     it "should give an error if password is blank" do
