@@ -37,7 +37,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages.length).to eq(1)
     end
 
-    it "should have matching password and password confirmation fields" do
+    it "should give an error if password and password_confirmation do not match" do
+      @user = User.new(first_name: "John", last_name: "Doe", email: "example@email.com", password: "password", password_confirmation: "pasword")
+      @user.valid?
+      expect(@user.errors.full_messages[0]).to eq("Password confirmation doesn't match Password")
+      expect(@user.errors.full_messages.length).to eq(1)
     end
 
     it "should have a unique e-mail" do
