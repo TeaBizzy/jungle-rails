@@ -17,6 +17,10 @@ RSpec.describe Product, type: :model do
     end
 
     it "should give an error if no quantity exists" do
+      @product = Product.new(name: "Pine Tree", price: 9.99, quantity: nil, category_id: 1)
+      @product.valid?
+      expect(@product.errors.full_messages[0]).to eq("Quantity can't be blank")
+      expect(@product.errors.full_messages.length).to eq(1)
     end
 
     it "should give an error if no category exists" do
