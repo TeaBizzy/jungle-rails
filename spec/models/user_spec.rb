@@ -74,6 +74,9 @@ RSpec.describe User, type: :model do
     end
 
     it "should return a user if password and email are correct" do
+      @user = User.authenticate_with_credentials("janesmith@email.com", "password")
+      expect(@user).to_not eq(nil)
+      expect(@user.email).to eq("janesmith@email.com")
     end
   end
 end
