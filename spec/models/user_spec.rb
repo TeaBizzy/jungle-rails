@@ -26,11 +26,15 @@ RSpec.describe User, type: :model do
     it "should give an error if password is blank" do
       @user = User.new(first_name: "John", last_name: "Doe", email: "example@email.com", password: nil)
       @user.valid?
-      expect(@user.errors.full_messages[0]).to eq("Password can't be blank")
-      expect(@user.errors.full_messages.length).to eq(1)
+      expect(@user.errors.full_messages.include? "Password can't be blank").to eq(true)
+      expect(@user.errors.full_messages.length).to eq(2)
     end
 
-    it "should have a password with a length greater than 8" do
+    it "should give an error if password length is less than 8" do
+      @user = User.new(first_name: "John", last_name: "Doe", email: "example@email.com", password: "qwerty")
+      @user.valid?
+      expect(@user.errors.full_messages[0]).to eq("Password is too short (minimum is 8 characters)")
+      expect(@user.errors.full_messages.length).to eq(1)
     end
 
     it "should have matching password and password confirmation fields" do
