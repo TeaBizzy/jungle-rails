@@ -24,6 +24,10 @@ RSpec.describe User, type: :model do
     end
 
     it "should give an error if password is blank" do
+      @user = User.new(first_name: "John", last_name: "Doe", email: "example@email.com", password: nil)
+      @user.valid?
+      expect(@user.errors.full_messages[0]).to eq("Password can't be blank")
+      expect(@user.errors.full_messages.length).to eq(1)
     end
 
     it "should have a password with a length greater than 8" do
