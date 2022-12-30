@@ -51,4 +51,21 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages.length).to eq(1)
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it "should return nil if email is missing" do
+    end
+
+    it "should return nil if email is incorrect" do
+    end
+
+    it "should return nil if password is missing" do
+    end
+
+    it "should return nil if password is incorrect" do
+    end
+
+    it "should return a user if password and email are correct" do
+    end
+  end
 end
