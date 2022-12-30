@@ -44,6 +44,11 @@ gem 'rmagick'
 gem 'faker'
 gem 'carrierwave'
 
+group :development, :test do
+  # Testing
+  gem 'rspec-rails', '~> 5.1'
+  gem 'net-smtp', require: false  
+end
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -55,7 +60,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
-gem 'rspec-rails'
 end
 
 group :development do
