@@ -23,7 +23,12 @@ RSpec.describe Product, type: :model do
       expect(@product.errors.full_messages.length).to eq(1)
     end
 
-    it "should give an error if no category exists" do
+    it "should give an error if category is blank" do
+      @product = Product.new(name: "Pine Tree", price: 9.99, quantity: 1)
+      @product.valid?
+      p @product.errors.full_messages
+      expect(@product.errors.full_messages.include? "Category can't be blank").to eq(true)
+      expect(@product.errors.full_messages.length).to eq(2)
     end
 
     it "should contain a name, price, qunatity, and category" do
