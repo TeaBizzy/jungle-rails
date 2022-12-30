@@ -44,7 +44,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages.length).to eq(1)
     end
 
-    it "should have a unique e-mail" do
+    it "should give an error if e-mail isn't unique" do
+      @user = User.new(first_name: "Jane", last_name: "Smith", email: "janesmith@email.com", password: "password")
+      @user.valid?
+      expect(@user.errors.full_messages[0]).to eq("Email has already been taken")
+      expect(@user.errors.full_messages.length).to eq(1)
     end
   end
 end
