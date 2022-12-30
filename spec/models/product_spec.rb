@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Product, type: :model do
   describe 'Validations' do
-    it "should give an error if no name exists" do
+    it "should give an error if name is blank" do
+      @product = Product.new(name: nil, price: 9.99, quantity: 1, category_id: 1)
+      @product.valid?
+      expect(@product.errors.full_messages[0]).to eq("Name can't be blank")
+      expect(@product.errors.full_messages.length).to eq(1)
     end
 
     it "should give an error if no price exists" do
