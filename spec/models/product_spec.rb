@@ -10,6 +10,10 @@ RSpec.describe Product, type: :model do
     end
 
     it "should give an error if no price exists" do
+      @product = Product.new(name: "Pine Tree", quantity: 1, category_id: 1)
+      @product.valid?
+      expect(@product.errors.full_messages.include? "Price can't be blank").to eq(true)
+      expect(@product.errors.full_messages.length).to eq(3)
     end
 
     it "should give an error if no quantity exists" do
