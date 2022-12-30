@@ -59,6 +59,8 @@ RSpec.describe User, type: :model do
     end
 
     it "should return nil if email is incorrect" do
+      @user = User.authenticate_with_credentials("steveg@email.com", "password")
+      expect(@user).to eq(nil)
     end
 
     it "should return nil if password is missing" do
