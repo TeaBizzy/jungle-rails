@@ -1,9 +1,9 @@
-describe('jungle app', () => {
+describe('Add to cart', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000');
   })
 
-  it('There is products on the home page', () => {
+  it('should add an item to the cart and increment the cart count in the navbar', () => {
       cy.get(".products article")
         .should("be.visible")
 
