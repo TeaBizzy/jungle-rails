@@ -47,7 +47,9 @@ gem 'carrierwave'
 group :development, :test do
   # Testing
   gem 'rspec-rails', '~> 5.1'
-  gem 'net-smtp', require: false  
+  gem 'net-smtp', require: false
+  gem "cypress-rails"
+  gem 'database_cleaner-active_record'
 end
 
 # Use Active Storage variant
